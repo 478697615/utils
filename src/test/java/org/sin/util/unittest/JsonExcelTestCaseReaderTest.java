@@ -14,6 +14,7 @@ public class JsonExcelTestCaseReaderTest {
     @ParameterizedTest
     @SmartJsonExcelFileSource("/org/sin/util/unittest/readFromJsonExcelFile.xlsx") // read arguments from excel file, located by annotation's value property, which is relative to resource folder
     void readFromJsonExcelFile(Integer expectedInteger
+            , Character expectedCharacter
             , String expectedString
             , List<String> expectedList
             , Map<String, String> expectedMap
@@ -25,6 +26,7 @@ public class JsonExcelTestCaseReaderTest {
 
         Assertions.assertThat(testPojo)
                 .returns(expectedInteger, TestPojo::getInteger)
+                .returns(expectedCharacter, TestPojo::getCharacter)
                 .returns(expectedString, TestPojo::getString)
                 .returns(expectedList, TestPojo::getList)
                 .returns(expectedMap, TestPojo::getMap)
@@ -33,5 +35,4 @@ public class JsonExcelTestCaseReaderTest {
                 .returns(expectedLocalDateTime, TestPojo::getLocalDateTime)
                 .returns(expectedPojoSubName, mainPojo -> mainPojo.getSub().getSubName());
     }
-
 }

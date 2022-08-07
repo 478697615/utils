@@ -1,16 +1,16 @@
-# 工具整理
+# 工具
 
-整理了开发过程中自己实现的可用于提高编码效率的工具类.
+实现了一些可用于提高编码效率的工具类，在此进行分享。
 
 ## 特性
 
-- JUnit5 参数化测试工具，支持从 Excel 中导入测试用例并自动转换参数类型
+- JUnit5 参数化测试工具，支持从 excel 文件读取测试用例
 
 ## 快速开始
 
-执行 ./gradlew build 命令构建jar包，再导入本地项目。要求 Java 8 及以上版本。
+构建：执行 ./gradlew build 命令构建 jar 包，再导入本地项目。要求 Java 8 及以上版本。
 
-核心注解：SmartJsonExcelFileArgumentsProvider，示例：
+使用方法：在参数化测试方法上添加 @SmartJsonExcelFileSource 注解，填入 excel 文件地址，程序会自动读取文件内容并将其转换成测试参数。
 
 ```
 public class JsonExcelTestCaseReaderTest {
@@ -39,6 +39,6 @@ public class JsonExcelTestCaseReaderTest {
 }
 ```
 
-readFromJsonExcelFile.xlsx 文件内容：
+excel 文件内容：
 
 ![文件内容](/src/test/resources/org/sin/util/unittest/testResult_readFromJsonExcelFile.png)

@@ -97,6 +97,10 @@ public class SmartJsonExcelFileArgumentsProvider implements ArgumentsProvider, A
     }
 
     private Object convertCellValue(String cellValue, JavaType targetType) {
+        if (cellValue == null) {
+            return null;
+        }
+
         CellValueParser cellValueParser = getCellValueParser();
         return cellValueParser.parseChain(cellValue, targetType);
     }
@@ -191,6 +195,10 @@ public class SmartJsonExcelFileArgumentsProvider implements ArgumentsProvider, A
                 return Double.parseDouble(cellValue);
             }
             if (Character.class == clazz) {
+                if (cellValue.length() != 1) {
+                    String errorMessage = String.format("字符转换失败：%s", cellValue);
+                    throw new JUnitException(errorMessage);
+                }
                 return cellValue.charAt(0);
             }
             if (String.class == clazz) {

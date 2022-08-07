@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class TestPojo {
     private Integer integer;
+    private Character character;
     private String string;
     private List<String> list;
     private Map<String, String> map;
@@ -22,6 +23,14 @@ public class TestPojo {
 
     public void setInteger(Integer integer) {
         this.integer = integer;
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
     }
 
     public String getString() {
